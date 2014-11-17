@@ -5,10 +5,14 @@
     <title>TicTac Game</title>
     <link rel="stylesheet" href="styles/main.min.css">
 </head>
-<body>
+<body ng-app="tictac">
     <h1>Tictac Game</h1>
-    
-    <!-- include: "type": "js", "files": "vendors/*.js" -->
+    <p>{{message}}</p>
+
+    <div ng-view=""></div>
+
+    <script src="vendors/angular.js"></script>
+    <!-- include: "type": "js", "files": "vendors/**/*.js" -->
     <script src="scripts/app.min.js"></script>
 </body>
 </html>

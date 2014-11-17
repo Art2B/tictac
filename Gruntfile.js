@@ -83,10 +83,27 @@ module.exports = function (grunt) {
           // includes files within path
           {expand: true, flatten: true, src: ['src/images/*'], dest: 'build/images/'},
           {expand: true, flatten: true, src: ['src/views/*'], dest: 'build/views/'},
-          {expand: true, flatten: true, src: ['.tmp/vendors/*'], dest: 'build/vendors/'},
-          {expand: true, flatten: true, src: ['src/index.html'], dest: '.tmp/'},
+          {expand: true, flatten: true, src: ['.tmp/vendors/others/*'], dest: 'build/vendors/others/'},
+          {expand: true, flatten: true, src: ['src/main.html'], dest: '<%= config.dist %>/'},
         ],
       },
+      vendor1: {
+        files: [
+          {expand: true, flatten: true, src: ['.tmp/vendors/*'], dest: '.tmp/vendors/others/'},
+        ]
+      },
+      vendor2: {
+        files: [
+          {
+            expand: true,
+            cwd: '.tmp/vendors/',
+            src: 'others/angular.js',
+            dest: 'build/vendors/',
+            flatten: true,
+            filter: 'isFile',
+          },
+        ]
+      }
     },
     clean: {
       dist: {
@@ -97,7 +114,23 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      tmp: [".tmp/"]
+      vendor1: {
+        files: [{
+          dot: true,
+          src: [
+            '.tmp/vendors/*.js',
+          ]
+        }]
+      },
+      vendor2: {
+        files: [{
+          dot: true,
+          src: [
+            '.tmp/vendors/others/angular.js'
+          ]
+        }]
+      },
+      tmp: [".tmp/"],
     },
     includeSource: {
       options: {
@@ -106,7 +139,7 @@ module.exports = function (grunt) {
       },
       dist: {
         files: {
-          '<%= config.dist %>/index.html': '.tmp/index.html'
+          '<%= config.dist %>/index.html': '<%= config.app %>/index.html'
         }
       }
     }
@@ -117,11 +150,15 @@ module.exports = function (grunt) {
     'clean:dist',
     'jshint:all',
     'bower:dist',
+    'copy:vendor1',
+    'clean:vendor1',
+    'copy:vendor2',
+    'clean:vendor2',
     'uglify:dist',
     'sass:dist',
     'cssmin:dist',
     'copy:dist',
     'includeSource:dist',
-    'clean:tmp'
+    'clean:tmp',
   ]);
 };
