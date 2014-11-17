@@ -35,6 +35,9 @@ module.exports = function (grunt) {
       all: ['<%= config.app %>/scripts/{,*/}*.js']
     },
     uglify: {
+      options: {
+        mangle: false
+      },
       dist: {
         files: {
           '<%= config.dist %>/scripts/app.min.js': ['<%= config.app %>/scripts/{,*/}*.js']

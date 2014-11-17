@@ -3,7 +3,7 @@
 
 angular.module('tictac').controller('HomeCtrl', ['$rootScope', '$scope',
   function($rootScope, $scope){
-    $scope.message = "Home Controller";
+    $rootScope.message = "Home Controller";
   }
 ]);
 }());

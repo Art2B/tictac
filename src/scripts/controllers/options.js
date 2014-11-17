@@ -3,7 +3,7 @@
 
 angular.module('tictac').controller('OptionsCtrl', ['$rootScope', '$scope',
   function($rootScope, $scope)  {
-    $scope.message = "Options Controller";
+    $rootScope.message = "Options Controller";
   }
 ]);
 }());

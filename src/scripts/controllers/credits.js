@@ -3,7 +3,7 @@
 
 angular.module('tictac').controller('CreditsCtrl', ['$rootScope', '$scope', 
   function($rootScope, $scope){
-    $scope.message = "Credits Controller";
+    $rootScope.message = "Credits Controller";
   }
 ]);
 }());
