@@ -3,11 +3,12 @@
 module.exports = function (grunt) {
 
   // Load npm tasks
-  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-include-source');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-bower');
 
@@ -85,15 +86,21 @@ module.exports = function (grunt) {
         ],
       },
     },
+    clean: {
+      build: ["build/"],
+      tmp: [".tmp/"]
+    },
   });
 
   // Actions
   grunt.registerTask('default', [
+    'clean:build',
     'jshint:all',
     'bower:dist',
     'uglify:dist',
     'sass:dist',
     'cssmin:dist',
-    'copy:dist'
+    'copy:dist',
+    'clean:tmp'
   ]);
 };
