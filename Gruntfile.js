@@ -8,6 +8,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-include-source');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-bower');
 
   var config = {
@@ -32,7 +33,7 @@ module.exports = function (grunt) {
       all: ['<%= config.app %>/scripts/{,*/}*.js']
     },
     uglify: {
-      build: {
+      dist: {
         files: {
           '<%= config.dist %>/scripts/app.min.js': ['<%= config.app %>/scripts/{,*/}*.js']
         }
@@ -68,11 +69,21 @@ module.exports = function (grunt) {
       }
     },
     cssmin: {
-      build: {
+      dist: {
         files: {
           '<%= config.dist %>/styles/main.min.css': ['.tmp/styles/{,*/}*.css']
         }
       }
+    },
+    copy: {
+      dist: {
+        files: [
+          // includes files within path
+          {expand: true, flatten: true, src: ['src/images/*'], dest: 'build/images/'},
+          {expand: true, flatten: true, src: ['src/views/*'], dest: 'build/views/'},
+          {expand: true, flatten: true, src: ['src/index.html'], dest: 'build/'},
+        ],
+      },
     },
   });
 
@@ -80,8 +91,9 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'jshint:all',
     'bower:dist',
-    'uglify:build',
+    'uglify:dist',
     'sass:dist',
-    'cssmin:build',
+    'cssmin:dist',
+    'copy:dist'
   ]);
 };
