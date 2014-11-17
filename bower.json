@@ -1,0 +1,23 @@
+{
+  "name": "tictac",
+  "version": "0.0.0",
+  "authors": [
+    "Arthur Battut <arthur@soixantecircuits.fr>"
+  ],
+  "description": "Un jeu construit avec Angular et Kinetic",
+  "main": "/app/index.html",
+  "license": "MIT",
+  "homepage": "art2b.github.io/tictac/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.2",
+    "kineticjs": "~5.1.0"
+  }
+}
