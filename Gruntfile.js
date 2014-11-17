@@ -7,6 +7,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-include-source');
+  grunt.loadNpmTasks('grunt-include-source');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -42,7 +43,7 @@ module.exports = function (grunt) {
     },
     bower: {
       dist: {
-        dest: '<%= config.dist %>/vendors'
+        dest: '.tmp/vendors'
       }
     },
     sass: {
@@ -82,25 +83,45 @@ module.exports = function (grunt) {
           // includes files within path
           {expand: true, flatten: true, src: ['src/images/*'], dest: 'build/images/'},
           {expand: true, flatten: true, src: ['src/views/*'], dest: 'build/views/'},
-          {expand: true, flatten: true, src: ['src/index.html'], dest: 'build/'},
+          {expand: true, flatten: true, src: ['.tmp/vendors/*'], dest: 'build/vendors/'},
+          {expand: true, flatten: true, src: ['src/index.html'], dest: '.tmp/'},
         ],
       },
     },
     clean: {
-      build: ["build/"],
+      dist: {
+        files: [{
+          dot: true,
+          src: [
+            '<%= config.dist %>/*',
+          ]
+        }]
+      },
       tmp: [".tmp/"]
     },
+    includeSource: {
+      options: {
+        basePath: '.tmp',
+        baseUrl: '',
+      },
+      dist: {
+        files: {
+          '<%= config.dist %>/index.html': '.tmp/index.html'
+        }
+      }
+    }
   });
 
   // Actions
   grunt.registerTask('default', [
-    'clean:build',
+    'clean:dist',
     'jshint:all',
     'bower:dist',
     'uglify:dist',
     'sass:dist',
     'cssmin:dist',
     'copy:dist',
+    'includeSource:dist',
     'clean:tmp'
   ]);
 };
