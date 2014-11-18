@@ -3,7 +3,15 @@
 
 angular.module('tictac').controller('OptionsCtrl', ['$rootScope', '$scope',
   function($rootScope, $scope)  {
-    $rootScope.message = "Options Controller";
+    $scope.images = [
+        'clock1.png',
+        'clock2.png',
+        'clock3.png'
+    ];
+
+    $scope.selectImg = function(img){
+        console.log(img);
+    };
   }
 ]);
 }());

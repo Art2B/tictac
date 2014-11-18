@@ -1,6 +1,59 @@
 @import compass
 @import compass/reset
+@import partials/mixins
+@import partials/commons
+@import url("http://fonts.googleapis.com/css?family=Lobster")
+
+body
+    background: url(../images/background.png)
+    font-family: Lobster
+    color: white
+    +backgroundSize(cover)
+    height: 100%
+    width: 100%
+
 
 h1
-    color: indianred
     text-align: center
+    font-size: 40px
+
+p
+    font-size: 20px
+
+.menu
+    margin-top: 10%
+    .img-title
+        text-indent: -9999px
+        background: url(../images/title.png)
+        display: block
+        height: 151px
+        width: 478px
+        margin: auto
+    ul
+        li
+            margin: auto
+
+.options
+    h1
+        margin-top: 2%
+    .container
+        background: white
+        width: 780px
+        margin: auto
+        margin-top: 2%
+        border: 6px solid gainsboro
+        border-radius: 15px
+        .clock-holder
+            height: 228px
+            width: 220px
+            display: inline-block
+            margin: 20px
+            +backgroundSize(cover)
+
+.credits
+    width: 600px
+    margin: auto
+    margin-top: 2%
+    h1
+        text-align: left
+        margin-bottom: 5%

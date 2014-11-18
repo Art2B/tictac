@@ -3,7 +3,7 @@
 
 angular.module('tictac').controller('CreditsCtrl', ['$rootScope', '$scope', 
   function($rootScope, $scope){
-    $rootScope.message = "Credits Controller";
+    $scope.author = "Arthur Battut";
   }
 ]);
 }());

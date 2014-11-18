@@ -3,7 +3,11 @@
 
 angular.module('tictac').controller('HomeCtrl', ['$rootScope', '$scope',
   function($rootScope, $scope){
-    $rootScope.message = "Home Controller";
+    $rootScope.isHome = true;
+    
+    $scope.showArrow = function(){
+        $rootScope.isHome = false;
+    };
   }
 ]);
 }());
