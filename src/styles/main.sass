@@ -58,3 +58,42 @@ p
     h1
         text-align: left
         margin-bottom: 5%
+
+
+::-webkit-inner-spin-button
+    -webkit-appearance: none
+::-webkit-outer-spin-button
+    -webkit-appearance: none
+
+.game-holder
+    width: 430px
+    margin: auto
+    color: black
+    p
+        text-align: center
+        color: white
+    input
+        height: 95px
+        width: 95px
+        border: 5px solid gainsboro
+        background: white
+        text-align: center
+        border-radius: 15px
+        font-size: 40px
+        font-family: Lobster
+        display: inline-block
+        &:focus
+            outline: none
+    .left-input
+        margin-left: 70px
+    input[type=number]
+        -moz-appearance: textfield
+    .btn-validate
+        margin-top: 10px
+
+.hours-arrow, .minutes-arrow
+    display: inline-block
+.hours-arrow
+    float: left
+.minutes-arrow
+    float: right

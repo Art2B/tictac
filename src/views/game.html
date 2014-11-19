@@ -1,1 +1,17 @@
-<p>Game</p>
+<!-- TODO: Canvas avec l'horloge -->
+<div class="game-holder">
+    <p>{{dayPeriod}}</p>
+  <form novalidate class="simple-form">
+    <div class="hours-arrow">
+        <div class="arrow top-arrow" ng-click="increaseHours(time.hours)"></div>
+        <div class="arrow bottom-arrow" ng-click="decreaseHours(time.hours)"></div>
+    </div>
+    <input class="left-input" type="number" ng-model="time.hours"/>  h  
+    <input type="number" ng-model="time.minutes"/>
+    <div class="minutes-arrow">
+        <div class="arrow top-arrow" ng-click="increaseMinutes(time.minutes)"></div>
+        <div class="arrow bottom-arrow" ng-click="decreaseMinutes(time.minutes)"></div>
+    </div>
+    <div class="btn-little btn-validate" ng-click="verify(time)"></div>
+  </form>
+</div>

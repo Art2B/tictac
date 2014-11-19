@@ -91,9 +91,12 @@ module.exports = function (grunt) {
         ],
       },
       vendor1: {
-        files: [
-          {expand: true, flatten: true, src: ['.tmp/vendors/*'], dest: '.tmp/vendors/others/'},
-        ]
+        expand: true,
+        cwd: '.tmp/vendors/',
+        src: '**',
+        dest: '.tmp/vendors/others/',
+        flatten: true,
+        filter: 'isFile',
       },
       vendor2: {
         files: [
@@ -122,6 +125,8 @@ module.exports = function (grunt) {
           dot: true,
           src: [
             '.tmp/vendors/*.js',
+            '.tmp/vendors/css/*',
+            '.tmp/vendors/js/*',
           ]
         }]
       },
@@ -150,6 +155,7 @@ module.exports = function (grunt) {
 
   // Actions
   grunt.registerTask('default', [
+    'clean:tmp',
     'clean:dist',
     'jshint:all',
     'bower:dist',

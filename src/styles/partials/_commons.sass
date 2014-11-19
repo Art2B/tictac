@@ -1,10 +1,10 @@
 .btn-little
     display: block
-    height: 111px
     width: 430px
+    height: 120px
     text-indent: -9999px
     background-repeat: no-repeat
-    +backgroundSize(cover)
+    +backgroundSize(contain)
     position: relative
     a
         position: absolute
@@ -19,6 +19,8 @@
     background-image: url(../images/button_options.png)
 .btn-credits
     background-image: url(../images/button_credits.png)
+.btn-validate
+    background-image: url(../images/verify.png)
 
 .back-arrow
     display: block
@@ -35,3 +37,17 @@
         right: 0
         bottom: 0
         left: 0
+
+.arrow
+    display: block
+    height: 50px
+    width: 33px
+    +backgroundSize(cover)
+    background-repeat: no-repeat
+    position: relative
+
+.bottom-arrow
+    background-image: url(../images/button_down.png)
+.top-arrow
+    background-image: url(../images/button_up.png)
+    margin-bottom: 5px

@@ -10,7 +10,7 @@ angular.module('tictac').controller('OptionsCtrl', ['$rootScope', '$scope',
     ];
 
     $scope.selectImg = function(img){
-        $rootScope.cloclk = img;
+        $rootScope.clockName = img;
     };
   }
 ]);
