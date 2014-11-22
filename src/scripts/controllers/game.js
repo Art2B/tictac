@@ -54,13 +54,9 @@ angular.module('tictac').controller('GameCtrl', ['$rootScope', '$scope', 'ngDial
             });
         }
     };
-    $scope.replay = function(){
-        tictac.init();
-    };
-    $rootScope.$on('ngDialog.opened', function (e, $dialog) {
-        console.log('ngDialog opened: ' + $dialog.attr('id'));
-    });
     $scope.newGame = function(){
+        $scope.time.hours = 0;
+        $scope.time.minutes = 0;
         tictac.newGame();
         $scope.dayPeriod = tictac.time.period;
     };
@@ -69,7 +65,9 @@ angular.module('tictac').controller('GameCtrl', ['$rootScope', '$scope', 'ngDial
         $scope.newGame();
     });
 
-    var tictac = new Tictac($scope, {});
+    var tictac = new Tictac({
+        image: clockName
+    });
     $scope.newGame();
   }
 ]);
