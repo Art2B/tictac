@@ -29,7 +29,7 @@ Tictac.prototype = {
 
         var stage = new Kinetic.Stage({
           container: 'clock-canvas',
-          width: 440,
+          width: 442,
           height: 456
         });
         var layer = new Kinetic.Layer();
@@ -40,20 +40,21 @@ Tictac.prototype = {
         
         clock.onload = function(){
             var background = new Kinetic.Image({
-                x: 0,
+                x: 4,
                 y: 0,
                 image: clock,
-                draggable: false
+                draggable: false,
             });
             layer.add(background);
             layer.draw(); 
         };
         hours.onload = function(){
             var hoursImage = new Kinetic.Image({
-                x: 218,
+                x: 224,
                 y: 220,
                 image: hours,
-                draggable: false
+                draggable: false,
+                offset: {x:3, y:0}
             });
             hoursImage.setScale({y:-1});
             var angle = ((360/12)*_self.time.hours) + ( (360/12) * (_self.time.minutes/60));
@@ -63,10 +64,11 @@ Tictac.prototype = {
         };
         minutes.onload = function(){
             var minutesImage = new Kinetic.Image({
-                x: 218,
+                x: 224,
                 y: 220,
                 image: minutes,
-                draggable: false
+                draggable: false,
+                offset: {x:3, y:0}
             });
             minutesImage.setScale({y:-1});
             var angle = (360/60)*_self.time.minutes;

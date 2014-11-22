@@ -7,8 +7,8 @@
         <div class="arrow top-arrow" ng-click="increaseHours(time.hours)"></div>
         <div class="arrow bottom-arrow" ng-click="decreaseHours(time.hours)"></div>
     </div>
-    <input class="left-input" type="number" ng-model="time.hours"/>  h  
-    <input type="number" ng-model="time.minutes"/>
+    <input class="left-input" type="number" ng-model="time.hours" ng-change="checkHours(time.hours)"/>  h  
+    <input type="number" ng-model="time.minutes" ng-change="checkMinutes(time.minutes)"/>
     <div class="minutes-arrow">
         <div class="arrow top-arrow" ng-click="increaseMinutes(time.minutes)"></div>
         <div class="arrow bottom-arrow" ng-click="decreaseMinutes(time.minutes)"></div>

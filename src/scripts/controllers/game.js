@@ -16,7 +16,7 @@ angular.module('tictac').controller('GameCtrl', ['$rootScope', '$scope', 'ngDial
     };
 
     $scope.increaseHours = function(obj){
-        if(obj < 24){
+        if(obj < 23){
             $scope.time.hours = obj + 1;
         }
     };
@@ -24,6 +24,16 @@ angular.module('tictac').controller('GameCtrl', ['$rootScope', '$scope', 'ngDial
         if(obj > 0){
             $scope.time.hours = obj - 1;
         }
+    };
+    $scope.checkHours = function(obj){
+        if(obj > 23 || obj < 0){
+            $scope.time.hours = 0;
+        }
+    };
+    $scope.checkMinutes = function(obj){
+        if(obj > 23 || obj < 0){
+            $scope.time.hours = 0;
+        }        
     };
     $scope.increaseMinutes = function(obj){
         if(obj < 59){
