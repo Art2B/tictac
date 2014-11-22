@@ -10,7 +10,7 @@ Tictac.prototype = {
     init: function(){
         var _self = this;
 
-        _self.time.hours = Math.floor(Math.random() * (24 - 0 + 1) + 0);
+        _self.time.hours = Math.floor(Math.random() * (23 - 0 + 1) + 0);
         _self.time.minutes = Math.floor(Math.random() * (12 - 0 + 1) + 0) * 5;
         if((_self.time.hours - 12) > 0){
             _self.time.period = "Après-midi";
@@ -29,5 +29,9 @@ Tictac.prototype = {
             isGood = false;
         }
         return isGood;
+    },
+    newGame: function(){
+        var _self = this;
+        _self.init();
     }
 };

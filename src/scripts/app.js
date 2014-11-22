@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-angular.module('tictac', ['ngRoute',])
+angular.module('tictac', ['ngRoute', 'ngDialog'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

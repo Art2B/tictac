@@ -1,8 +1,8 @@
 (function(){
 'use strict';
 
-angular.module('tictac').controller('GameCtrl', ['$rootScope', '$scope',
-  function($rootScope, $scope){
+angular.module('tictac').controller('GameCtrl', ['$rootScope', '$scope', 'ngDialog',
+  function($rootScope, $scope, ngDialog){
     var clockName = '';
     if($rootScope.clockName !== undefined) {
         clockName = $rootScope.clockName;
@@ -38,21 +38,39 @@ angular.module('tictac').controller('GameCtrl', ['$rootScope', '$scope',
         }
     };
     $scope.verify = function(time){
+        var btnString = '<div class="btn-little btn-small btn-menu" ng-click="closeThisDialog()"><a href="#/"></a></div><div class="btn-little btn-small btn-replay" ng-click="closeThisDialog()"></div>';
         if(tictac.verify(time)) {
             $scope.result = true;
-            ngDialog.open({ template: 'win.html' });
+            ngDialog.open({
+                template: '<img src="images/success.png" width="400">'+btnString,
+                plain: true
+            });
         } else {
             $scope.result = false;
-            ngDialog.open({ template: 'loose.html' });
+            var goodTime = tictac.time.hours + "h"+tictac.time.minutes;
+            ngDialog.open({
+                template: '<img src="images/fail.png" width="400"><p>L\'heure exacte était: '+goodTime+'</p>'+btnString,
+                plain: true
+            });
         }
     };
     $scope.replay = function(){
         tictac.init();
     };
+    $rootScope.$on('ngDialog.opened', function (e, $dialog) {
+        console.log('ngDialog opened: ' + $dialog.attr('id'));
+    });
+    $scope.newGame = function(){
+        tictac.newGame();
+        $scope.dayPeriod = tictac.time.period;
+    };
+
+    $rootScope.$on('ngDialog.closing', function (e, $dialog) {
+        $scope.newGame();
+    });
 
     var tictac = new Tictac($scope, {});
-    tictac.init();
-    $scope.dayPeriod = tictac.time.period;
+    $scope.newGame();
   }
 ]);
 }());

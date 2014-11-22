@@ -97,3 +97,19 @@ p
     float: left
 .minutes-arrow
     float: right
+
+.ngdialog-content
+    border: 5px solid gainsboro
+    .ngdialog-close
+        height: 46px
+        width: 46px
+        top: -20px !important
+        right: -20px !important
+        background: url(../images/cross.png)
+        +backgroundSize(cover)
+        cursor: pointer
+        &:before
+            display: none
+    p
+        font-family: Lobster
+        text-align: center
