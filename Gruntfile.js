@@ -150,7 +150,7 @@ module.exports = function (grunt) {
           '<%= config.dist %>/index.html': '<%= config.app %>/index.html'
         }
       }
-    }
+    },
   });
 
   // Actions

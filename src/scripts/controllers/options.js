@@ -11,6 +11,7 @@ angular.module('tictac').controller('OptionsCtrl', ['$rootScope', '$scope',
 
     $scope.selectImg = function(img){
         $rootScope.clockName = img;
+        $scope.state = "Horloge changée avec succès !";
     };
   }
 ]);
