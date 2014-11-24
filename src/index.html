@@ -7,9 +7,9 @@
     <!-- include: "type": "css", "files": "vendors/**/*.css" -->
 </head>
 <body ng-app="tictac">
-    <div class="back-arrow" ng-hide="isHome"><a href="#/"></a></div>
+    <div class="back-arrow" id="return" ng-hide="isHome"><a href="#/"></a></div>
 
-    <div ng-view=""></div>
+    <div id="main" ng-view=""></div>
 
     <script src="vendors/angular.js"></script>
     <!-- include: "type": "js", "files": "vendors/**/*.js" -->

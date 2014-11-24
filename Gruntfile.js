@@ -3,6 +3,9 @@
 module.exports = function (grunt) {
 
   // Load npm tasks
+  grunt.loadNpmTasks('grunt-protractor-runner');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-start-webdriver');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -151,6 +154,29 @@ module.exports = function (grunt) {
         }
       }
     },
+    connect: {
+      dist: {
+        options: {
+          port: 9000,
+          hostname: 'localhost',
+          base: 'build'
+        }
+      }
+    },
+    protractor: {
+      options: {
+        keepAlive: true,
+        noColor: false,
+      },
+      test: {
+        options: {
+          configFile: "tests/protractor.config.js",
+          args: {
+            specs: ['tests/scenarios/tests.js']
+          }
+        }
+      }
+    },
   });
 
   // Actions
@@ -169,5 +195,8 @@ module.exports = function (grunt) {
     'copy:dist',
     'includeSource:dist',
     'clean:tmp',
+  ]);
+  grunt.registerTask('test', [
+    'protractor'
   ]);
 };
