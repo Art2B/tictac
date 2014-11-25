@@ -1,5 +1,8 @@
 #Tictac
 
+Tictac is a web app build to help kids to learn read hour. Build with Angular and Kinetic.
+Try it [here](http://art2b.github.io/games/tictac/#/) !
+
 ##To run the app: 
 1. `git clone https://github.com/Art2B/tictac.git`
 2. `cd tictac`
