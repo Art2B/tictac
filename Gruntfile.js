@@ -158,7 +158,7 @@ module.exports = function (grunt) {
       dist: {
         options: {
           port: 9000,
-          hostname: 'localhost',
+          hostname: '127.0.0.1',
           base: 'build'
         }
       }
@@ -197,6 +197,7 @@ module.exports = function (grunt) {
     'clean:tmp',
   ]);
   grunt.registerTask('test', [
-    'protractor'
+    'connect',
+    'protractor:test'
   ]);
 };
